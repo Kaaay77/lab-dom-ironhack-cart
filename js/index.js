@@ -1,23 +1,36 @@
 // ITERATION 1
 
-function updateSubtotal(product) {
-  console.log('Calculating subtotal, yey!');
+const { TestWatcher } = require("jest");
 
-  //... your code goes here
+function updateSubtotal(product) {
+  debugger
+  let priceElement = product.querySelector('.price span');
+  let quantityElement = product.querySelector('.quantity input');
+  
+
+  let price =  Number(priceElement.innerText);
+  let quantity = Number(quantityElement.value);
+
+  let subTotal = price * quantity;
+  let subTotalElement = product.querySelector('.subtotal span');
+
+  console.log(price)
+  subTotalElement.innerText = subTotal;
+  return subTotal;
 }
+// NO ME FUNCIONA EL TEST !!!!!!!!!!!!!
 
 function calculateAll() {
   // code in the following two lines is added just for testing purposes.
   // it runs when only iteration 1 is completed. at later point, it can be removed.
-  const singleProduct = document.querySelector('.product');
-  updateSubtotal(singleProduct);
+  const productsElements = document.querySelectorAll('.product');
+  let sumatorio = 0;
+  productsElements.forEach((item) =>{
+    sumatorio += updateSubtotal(item)});
   // end of test
-
-  // ITERATION 2
-  //... your code goes here
-
+  
   // ITERATION 3
-  //... your code goes here
+  
 }
 
 // ITERATION 4
